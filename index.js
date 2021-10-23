@@ -18,7 +18,7 @@ const accessLogs = fs.createWriteStream(path.join(__dirname, "access.log"), {
   flags: "a",
 });
 
-// app.use(cors());
+app.use(cors());
 app.use(helmet());
 app.use(morgan("combined", { stream: accessLogs }));
 routes.userRoutes(app);
