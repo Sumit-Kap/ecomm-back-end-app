@@ -5,11 +5,22 @@ const bodyParser = require("body-parser");
 const app = express();
 const dbConfig = require("./dbConfig/dbConfig");
 const routes = require("./Routes/routes");
+const fs = require("fs");
 const cors = require("cors");
+const morgan = require("morgan");
+const helmet = require("helmet");
+const path = require("path");
 // app.use(express.json());
 dbConfig.connect();
 app.use(bodyParser.json());
-app.use(cors());
+
+const accessLogs = fs.createWriteStream(path.join(__dirname, "access.log"), {
+  flags: "a",
+});
+
+// app.use(cors());
+app.use(helmet());
+app.use(morgan("combined", { stream: accessLogs }));
 routes.userRoutes(app);
 
 // special middleware
