@@ -1,0 +1,6 @@
+::1 - - [23/Oct/2021:15:29:33 +0000] "GET /api/v1/users HTTP/1.1" 500 34 "-" "PostmanRuntime/7.26.8"
+::1 - - [23/Oct/2021:15:29:42 +0000] "GET /api/v1/users HTTP/1.1" 500 34 "-" "PostmanRuntime/7.26.8"
+::1 - - [23/Oct/2021:15:29:43 +0000] "GET /api/v1/users HTTP/1.1" 500 34 "-" "PostmanRuntime/7.26.8"
+::1 - - [23/Oct/2021:15:29:43 +0000] "GET /api/v1/users HTTP/1.1" 500 34 "-" "PostmanRuntime/7.26.8"
+::1 - - [23/Oct/2021:15:29:45 +0000] "GET /api/v1/users HTTP/1.1" 500 34 "-" "PostmanRuntime/7.26.8"
+::1 - - [23/Oct/2021:15:29:54 +0000] "GET /api/v1/users HTTP/1.1" 500 34 "-" "PostmanRuntime/7.26.8"
