@@ -17,7 +17,13 @@ const orderController = {
     }
   },
   verifyPayment: (req, res, next) => {
-    console.log("print", req.body);
+    console.log(
+      "print",
+      req.body,
+      req.headers,
+      req.body.payload.payment.entity,
+      JSON.stringify(req.body)
+    );
     res.status(200).json({ message: ok });
   },
 };
