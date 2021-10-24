@@ -4,7 +4,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const dbConfig = require("./dbConfig/dbConfig");
-const routes = require("./Routes/routes");
+const routes = require("./Routes/user.auth.routes");
+const orderRoutes = require("./Routes/order.routes");
 const fs = require("fs");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -22,8 +23,8 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("combined", { stream: accessLogs }));
 routes.userRoutes(app);
+orderRoutes.orderRoute(app);
 
-// special middleware
 app.use((error, req, res, next) => {
   res.status(500).json({ message: "something went wrong" });
 });
