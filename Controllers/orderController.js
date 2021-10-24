@@ -24,6 +24,19 @@ const orderController = {
       req.body.payload.payment.entity,
       JSON.stringify(req.body)
     );
+    orderService.verifyPaymentService(
+      req.headers,
+      req.body,
+      (err, response) => {
+        if (err) {
+          res.status(200).json({ message: "something went wrong" });
+        } else {
+          res.redirect(
+            "https://ecomm-frontend-app.herokuapp.com/payment/success"
+          );
+        }
+      }
+    );
     res.status(200).json({ message: ok });
   },
 };

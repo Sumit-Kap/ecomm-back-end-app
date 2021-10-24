@@ -1,6 +1,7 @@
 const Razorpay = require("razorpay");
 const Order = require("../models/Order");
 const { v4: uuidv4 } = require("uuid");
+const crypto = require("crypto");
 const orderService = {
   orderCreationService: async (response, cb) => {
     const instance = new Razorpay({
@@ -31,6 +32,36 @@ const orderService = {
         });
     } catch (err) {
       console.log(err);
+    }
+  },
+  verifyPaymentService: (headers, requestBody, cb) => {
+    const razorPaySignature = headers["x-razorpay-signature"];
+    console.log("signature", razorPaySignature);
+    const generatedSignature = crypto.createHmac(
+      "sha256",
+      proces.env.process.env.razor_pay_secret
+    );
+    generatedSignature.update(
+      requestBody.payload.payment.entity.order_id +
+        "|" +
+        requestBody.payload.payment.entity.id
+    );
+    if (generated_signature.digest("hex") === razorPaySignature) {
+      Order.findOneAndUpdate(
+        { payment_id: requestBody.payload.payment.entity.order_id },
+        {
+          order_status: "order_payment_status_success",
+          payment_response: requestBody.payload,
+        },
+        { new: true },
+        (err, response) => {
+          if (err) {
+            cb(err, null);
+          } else {
+            cb(null, response);
+          }
+        }
+      );
     }
   },
 };
