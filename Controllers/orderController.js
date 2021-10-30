@@ -17,7 +17,7 @@ const orderController = {
     }
   },
   verifyPayment: (req, res, next) => {
-    console.log("print", req.body, req.headers, JSON.stringify(req.body));
+    console.log("print", req);
     // orderService.verifyPaymentService(
     //   req.headers,
     //   req.body,
