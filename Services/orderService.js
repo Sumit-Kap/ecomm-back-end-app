@@ -47,6 +47,7 @@ const orderService = {
         requestBody.payload.payment.entity.id
     );
     if (generated_signature.digest("hex") === razorPaySignature) {
+      console.log("Inside razorPaySignature");
       Order.findOneAndUpdate(
         { payment_id: requestBody.payload.payment.entity.order_id },
         {
@@ -58,6 +59,7 @@ const orderService = {
           if (err) {
             cb(err, null);
           } else {
+            console.log("In success response", response);
             cb(null, response);
           }
         }

@@ -29,11 +29,12 @@ const orderController = {
       req.body,
       (err, response) => {
         if (err) {
-          res.status(200).json({ message: "something went wrong" });
+          res.status(500).json({ message: "something went wrong" });
         } else {
-          res.redirect(
-            "https://ecomm-frontend-app.herokuapp.com/payment/success"
-          );
+          // res.redirect(
+          //   "https://ecomm-frontend-app.herokuapp.com/payment/success"
+          // );
+          res.status(200).json({ message: ok });
         }
       }
     );
