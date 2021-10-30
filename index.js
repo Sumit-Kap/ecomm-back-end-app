@@ -14,6 +14,7 @@ const path = require("path");
 // app.use(express.json());
 dbConfig.connect();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const accessLogs = fs.createWriteStream(path.join(__dirname, "access.log"), {
   flags: "a",
