@@ -17,28 +17,23 @@ const orderController = {
     }
   },
   verifyPayment: (req, res, next) => {
-    console.log(
-      "print",
-      req.body,
-      req.headers,
-      req.body.payload.payment.entity,
-      JSON.stringify(req.body)
-    );
-    orderService.verifyPaymentService(
-      req.headers,
-      req.body,
-      (err, response) => {
-        if (err) {
-          res.status(500).json({ message: "something went wrong" });
-        } else {
-          // res.redirect(
-          //   "https://ecomm-frontend-app.herokuapp.com/payment/success"
-          // );
-          res.status(200).json({ message: ok });
-        }
-      }
-    );
-    res.status(200).json({ message: ok });
+    console.log("print", req.body, req.headers, JSON.stringify(req.body));
+    // orderService.verifyPaymentService(
+    //   req.headers,
+    //   req.body,
+    //   (err, response) => {
+    //     if (err) {
+    //       res.status(500).json({ message: "something went wrong" });
+    //     } else {
+    //       // res.redirect(
+    //       //   "https://ecomm-frontend-app.herokuapp.com/payment/success"
+    //       // );
+    //       res.status(200).json({ message: ok });
+    //     }
+    //   }
+    // );
+    res.redirect("https://ecomm-frontend-app.herokuapp.com/payment/success");
+    // res.status(200).json({ message: ok });
   },
 };
 
